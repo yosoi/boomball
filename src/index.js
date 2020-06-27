@@ -1,4 +1,5 @@
-import App from './App';
+import App from './ui/App';
+import Boomball from './game/Boomball'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-grid.css';
 import 'bootstrap/dist/css/bootstrap-reboot.css';
@@ -8,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App game={new Boomball()}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
