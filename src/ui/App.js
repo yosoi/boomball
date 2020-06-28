@@ -5,11 +5,7 @@ import React, { useState } from 'react'
 import Row from 'react-bootstrap/Row'
 import Scoreboard from './Scoreboard'
 
-// pass callbacks into game
-// these callbacks set app state
-// pass app state into scoreboards
-// in this way, scoreboards update when game changes
-function App() {
+function App({onComponentReady}) {
   const [p1BestStreak, setP1BestStreak] = useState(0);
   const [p1CurrentStreak, setP1CurrentStreak] = useState(0);
   const [p1Score, setP1Score] = useState(0);
@@ -20,7 +16,24 @@ function App() {
     <Container>
       <Row>
         <Col>
-          <Game />
+          <Game
+            id="boomball"
+            onComponentReady={onComponentReady}
+            onConnected={(player) => {
+              console.log(player + " connected");
+            }}
+            onConnecting={(player) => {
+              console.log(player + " connecting");
+            }}
+            onDisconnected={(player) => {
+              console.log(player + " disconnected");
+            }}
+            onScore={(player) => {
+              console.log(player + " scored");
+            }}
+            onWin={(player) => {
+              console.log(player + " won");
+            }}/>
         </Col>
       </Row>
       <Row>
