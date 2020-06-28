@@ -1,4 +1,4 @@
-import getConfig from './getConfig'
+import getConfig from './utils/getConfig'
 import Phaser from 'phaser'
 
 export default function(id) {

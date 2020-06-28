@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import Events from '../events/Events'
+import React, { useEffect } from 'react'
 
 export default function({
   id,
@@ -10,18 +11,19 @@ export default function({
   onWin
 }) {
   useEffect(() => {
-    window.addEventListener('onConnected', onConnected);
-    window.addEventListener('onConnecting', onConnecting);
-    window.addEventListener('onDisconnected', onDisconnected);
-    window.addEventListener('onScore', onScore);
-    window.addEventListener('onConnecting', onConnecting);
+    const e = new Events();
+    e.onConnected(onConnected, true);
+    e.onConnecting(onConnecting, true);
+    e.onDisconnected(onDisconnected, true);
+    e.onScore(onScore, true);
+    e.onWin(onWin, true);
     onComponentReady(id);
     return () => {
-      window.removeEventListener('onConnected', onConnected);
-      window.removeEventListener('onConnecting', onConnecting);
-      window.removeEventListener('onDisconnected', onDisconnected);
-      window.removeEventListener('onScore', onScore);
-      window.removeEventListener('onConnecting', onConnecting);
+      e.onConnected(onConnected, false);
+      e.onConnecting(onConnecting, false);
+      e.onDisconnected(onDisconnected, false);
+      e.onScore(onScore, false);
+      e.onWin(onWin, false);
     };
   }, [
     id,

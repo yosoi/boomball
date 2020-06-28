@@ -1,7 +1,7 @@
-import create from './scenes/create'
+import create from '../scenes/create'
 import Phaser from 'phaser'
-import preload from './scenes/preload'
-import update from './scenes/update'
+import preload from '../scenes/preload'
+import update from '../scenes/update'
 
 export default function(id) {
   return {
