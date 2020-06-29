@@ -19,20 +19,20 @@ function App({onComponentReady}) {
           <Game
             id="boomball"
             onComponentReady={onComponentReady}
-            onConnected={(player) => {
-              console.log(player + " connected");
+            onConnected={(e) => {
+              console.log(e.detail + " connected");
             }}
-            onConnecting={(player) => {
-              console.log(player + " connecting");
+            onConnecting={(e) => {
+              console.log(e.detail + " connecting");
             }}
-            onDisconnected={(player) => {
-              console.log(player + " disconnected");
+            onDisconnected={(e) => {
+              console.log(e.detail + " disconnected");
             }}
-            onScore={(player) => {
-              console.log(player + " scored");
+            onScore={(e) => {
+              console.log(e.detail + " scored");
             }}
-            onWin={(player) => {
-              console.log(player + " won");
+            onWin={(e) => {
+              console.log(e.detail + " won");
             }}/>
         </Col>
       </Row>
