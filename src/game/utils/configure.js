@@ -5,9 +5,12 @@ import update from '../scenes/update'
 
 export default function(id) {
   return {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#eeeeee',
     physics: {
-      default: 'matter'
+      default: 'matter',
+      matter: {
+        enableSleeping: true
+      }
     },
     scale: {
       autoCenter: Phaser.Scale.CENTER_BOTH,

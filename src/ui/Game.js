@@ -35,6 +35,8 @@ export default function({
     onWin
   ]);
   return (
-    <div id={id}></div>
+    <div
+      className="mt-1"
+      id={id}></div>
   );
 }
