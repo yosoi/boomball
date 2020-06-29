@@ -5,6 +5,13 @@ import update from '../scenes/update'
 
 export default function(id) {
   return {
+    backgroundColor: '#ffffff',
+    physics: {
+      default: 'arcade',
+      arcade: {
+        gravity: { y: 500 }
+      }
+    },
     scale: {
       autoCenter: Phaser.Scale.CENTER_BOTH,
       height: 600,
