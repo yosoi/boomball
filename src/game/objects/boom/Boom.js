@@ -5,10 +5,7 @@ export default function(scene, onArmed, onCharging, onFired) {
   let point = undefined;
   let timer = undefined;
   this.arm = function(x, y) {
-    point = new Phaser.Geom.Point(
-      x / scene.sys.game.canvas.width,
-      y / scene.sys.game.canvas.height
-    );
+    point = new Phaser.Geom.Point(x, y);
     onArmed(point);
     timer = scene.time.addEvent({
       callback: () => {

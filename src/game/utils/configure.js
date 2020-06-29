@@ -7,10 +7,7 @@ export default function(id) {
   return {
     backgroundColor: '#ffffff',
     physics: {
-      default: 'arcade',
-      arcade: {
-        gravity: { y: 500 }
-      }
+      default: 'matter'
     },
     scale: {
       autoCenter: Phaser.Scale.CENTER_BOTH,

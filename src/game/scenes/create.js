@@ -3,6 +3,9 @@ import Boom from '../objects/boom/Boom'
 import Pointer from '../utils/Pointer'
 
 export default function() {
+  // init physics
+  this.matter.world.setBounds(5, 5, 790, 590);
+
   // create the ball
   const ball = new Ball(this);
 
@@ -19,6 +22,9 @@ export default function() {
     },
     // onFired
     (charge, point) => {
+      console.log(point, ball);
+      // const forceVector = undefined;
+      // ball.applyForceFrom(point, forceVector);
       console.log("fire", charge, point);
     }
   );
