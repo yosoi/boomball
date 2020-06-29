@@ -1,10 +1,11 @@
 import Ball from '../objects/ball/Ball'
 import Boom from '../objects/boom/Boom'
+import Phaser from 'phaser'
 import Pointer from '../utils/Pointer'
 
 export default function() {
   // init physics
-  this.matter.world.setBounds(5, 5, 790, 590);
+  this.matter.world.setBounds();
 
   // create the ball
   const ball = new Ball(this);
@@ -22,10 +23,22 @@ export default function() {
     },
     // onFired
     (charge, point) => {
-      console.log(point, ball);
+      // TODO: apply force to ball using point and charge
       // const forceVector = undefined;
       // ball.applyForceFrom(point, forceVector);
-      console.log("fire", charge, point);
+      const ballPosition = new Phaser.Math.Vector2(ball.x, ball.y);
+      const direction = ballPosition.subtract(point);
+      direction.normalize();
+      this.matter.applyForceFromPosition(
+        ball,
+        point,
+        0.05 * charge,
+        direction.angle()
+      );
+      // console.log(point, direction);
+      // ball.applyForceFrom(point, direction);
+      // console.log(ballPosition, point, direction);
+      // console.log("fire", charge, point);
     }
   );
 
