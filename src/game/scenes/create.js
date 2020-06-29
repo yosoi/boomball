@@ -14,18 +14,11 @@ export default function() {
   const p1Boom = new Boom(
     this,
     // onArmed
-    (point) => {
-      console.log("armed", point);
-    },
+    (point) => {},
     // onCharging
-    (charge, point) => {
-      console.log("charging", charge, point);
-    },
+    (charge, point) => {},
     // onFired
     (charge, point) => {
-      // TODO: apply force to ball using point and charge
-      // const forceVector = undefined;
-      // ball.applyForceFrom(point, forceVector);
       const ballPosition = new Phaser.Math.Vector2(ball.x, ball.y);
       const direction = ballPosition.subtract(point);
       direction.normalize();
@@ -35,15 +28,11 @@ export default function() {
         0.05 * charge,
         direction.angle()
       );
-      // console.log(point, direction);
-      // ball.applyForceFrom(point, direction);
-      // console.log(ballPosition, point, direction);
-      // console.log("fire", charge, point);
     }
   );
 
   // handle input
-  const pointer = new Pointer(
+  new Pointer(
     this,
     // onPointerDown
     (pointer) => p1Boom.arm(pointer.x, pointer.y),
