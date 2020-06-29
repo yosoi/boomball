@@ -10,11 +10,17 @@ export default function() {
   const p1Boom = new Boom(
     this,
     // onArmed
-    () => {console.log("armed");},
+    (point) => {
+      console.log("armed", point);
+    },
     // onCharging
-    (charge) => {console.log("charging: " + charge);},
+    (charge, point) => {
+      console.log("charging", charge, point);
+    },
     // onFired
-    (charge) => {console.log("fire: " + charge);}
+    (charge, point) => {
+      console.log("fire", charge, point);
+    }
   );
 
   // handle input

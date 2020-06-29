@@ -1,12 +1,19 @@
+import Phaser from 'phaser'
+
 export default function(scene, onArmed, onCharging, onFired) {
   let charge = 0;
+  let point = undefined;
   let timer = undefined;
   this.arm = function(x, y) {
-    onArmed();
+    point = new Phaser.Geom.Point(
+      x / scene.sys.game.canvas.width,
+      y / scene.sys.game.canvas.height
+    );
+    onArmed(point);
     timer = scene.time.addEvent({
       callback: () => {
         charge += 0.2;
-        onCharging(charge);
+        onCharging(charge, point);
       },
       callbackScope: scene,
       delay: 200,
@@ -14,7 +21,7 @@ export default function(scene, onArmed, onCharging, onFired) {
     });
   };
   this.fire = function() {
-    onFired(charge);
+    onFired(charge, point);
     timer.remove();
     charge = 0;
   };
