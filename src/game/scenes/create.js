@@ -1,7 +1,28 @@
+import Ball from '../objects/ball/Ball'
+import Boom from '../objects/boom/Boom'
+import Pointer from '../utils/Pointer'
+
 export default function() {
-  const ball = this.add.circle(400, 300, 10, 0x000000);
-  this.physics.add.existing(ball);
-  ball.body.bounce.x = 1;
-  ball.body.bounce.y = 1;
-  ball.body.collideWorldBounds = true;
+  // create the ball
+  const ball = new Ball(this);
+
+  // create a "boom" for player 1
+  const p1Boom = new Boom(
+    this,
+    // onArmed
+    () => {console.log("armed");},
+    // onCharging
+    (charge) => {console.log("charging: " + charge);},
+    // onFired
+    (charge) => {console.log("fire: " + charge);}
+  );
+
+  // handle input
+  const pointer = new Pointer(
+    this,
+    // onPointerDown
+    (pointer) => p1Boom.arm(pointer.x, pointer.y),
+    // onPointerUp
+    (pointer) => p1Boom.fire()
+  );
 }
