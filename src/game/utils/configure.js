@@ -5,7 +5,7 @@ import update from '../scenes/update'
 
 export default function(id) {
   return {
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#FCFCFC',
     physics: {
       default: 'matter',
       matter: {

@@ -1,6 +1,6 @@
 export default function(scene, charge, point) {
   const circle = scene.add.circle(point.x, point.y, 10);
-  circle.setStrokeStyle(2, 0x000000);
+  circle.setStrokeStyle(2, 0xF9C80E);
   scene.tweens.add({
     targets: circle,
     duration: 200,
