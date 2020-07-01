@@ -7,11 +7,10 @@ export default function(scene) {
         point.x,
         point.y,
         targetRadius,
-        0x000000
+        0xF9C80E
       );
     } else {
-      circle.x = point.x;
-      circle.y = point.y;
+      circle.setPosition(point.x, point.y);
       const currentRadius = circle.radius;
       scene.tweens.add({
         targets: circle,

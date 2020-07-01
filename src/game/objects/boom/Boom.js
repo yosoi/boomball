@@ -1,12 +1,9 @@
 import ChargeIndicator from './graphics/ChargeIndicator'
-import ParticleEffect from './graphics/ParticleEffect'
 import Phaser from 'phaser'
 import Shockwave from './graphics/Shockwave'
 
 export default function(scene, onArmed, onCharging, onFired) {
   const chargeIndicator = new ChargeIndicator(scene);
-  const particleEffect = new ParticleEffect(scene);
-
   let charge = 0;
   let point = undefined;
   let timer = undefined;
@@ -14,7 +11,6 @@ export default function(scene, onArmed, onCharging, onFired) {
   this.arm = function(x, y) {
     point = new Phaser.Math.Vector2(x, y);
     onArmed(point);
-    particleEffect.play(point);
     chargeIndicator.set(charge, point);
     timer = scene.time.addEvent({
       callback: () => {
@@ -27,13 +23,12 @@ export default function(scene, onArmed, onCharging, onFired) {
       repeat: 4
     });
   };
-
+  
   this.fire = function() {
     new Shockwave(scene, charge, point);
     onFired(charge, point);
     timer.remove();
     charge = 0;
     chargeIndicator.set(charge, point);
-    particleEffect.stop();
   };
 }

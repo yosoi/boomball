@@ -1,3 +1,4 @@
+import Background from '../objects/background/Background'
 import Ball from '../objects/ball/Ball'
 import Boom from '../objects/boom/Boom'
 import Phaser from 'phaser'
@@ -6,6 +7,9 @@ import Pointer from '../utils/Pointer'
 export default function() {
   // init physics
   this.matter.world.setBounds();
+
+  // create background
+  new Background(this);
 
   // create the ball
   const ball = new Ball(this, (collisionData) => {
