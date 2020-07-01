@@ -15,12 +15,12 @@ export default function(scene, onArmed, onCharging, onFired) {
     point = new Phaser.Math.Vector2(x, y);
     onArmed(point);
     particleEffect.play(point);
-    chargeIndicator.set(charge);
+    chargeIndicator.set(charge, point);
     timer = scene.time.addEvent({
       callback: () => {
         charge += 0.2;
         onCharging(charge, point);
-        chargeIndicator.set(charge);
+        chargeIndicator.set(charge, point);
       },
       callbackScope: scene,
       delay: 200,
@@ -29,11 +29,11 @@ export default function(scene, onArmed, onCharging, onFired) {
   };
 
   this.fire = function() {
+    chargeIndicator.set(charge, point);
+    particleEffect.stop();
+    new Shockwave(scene, charge, point);
     onFired(charge, point);
     timer.remove();
     charge = 0;
-    chargeIndicator.set(charge);
-    particleEffect.stop();
-    new Shockwave(scene, charge, point);
   };
 }
