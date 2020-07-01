@@ -1,6 +1,7 @@
 import Background from '../objects/background/Background'
 import Ball from '../objects/ball/Ball'
 import Boom from '../objects/boom/Boom'
+import Events from '../../events/Events'
 import Goal from '../objects/goal/Goal'
 import Phaser from 'phaser'
 import Pointer from '../utils/Pointer'
@@ -8,6 +9,9 @@ import Pointer from '../utils/Pointer'
 export default function() {
   // init physics
   this.matter.world.setBounds();
+
+  // init events
+  const events = new Events();
 
   // create background
   new Background(this);
@@ -19,7 +23,7 @@ export default function() {
     300,
     // onP2Scored
     () => {
-      console.log("p2 scored");
+      events.score('p2');
     }
   );
 
@@ -30,7 +34,7 @@ export default function() {
     300,
     // onP1Scored
     () => {
-      console.log("p1 scored");
+      events.score('p1');
     },
     false
   )
@@ -38,7 +42,7 @@ export default function() {
   // create the ball
   const ball = new Ball(this, (collisionData) => {
     // onBounce
-    // console.log("bounce", collisionData);
+    console.log("bounce", collisionData);
   });
 
   // create a "boom" for player 1

@@ -2,7 +2,7 @@ import Net from './Net'
 import Phaser from 'phaser'
 
 export default function(scene, x, height, onScoredUpon, startTop = true) {
-  const track = scene.add.rectangle(x, 300, 1, height, 0xDDDDDD);
+  scene.add.rectangle(x, 300, 1, height, 0xDDDDDD);
   const net = new Net(scene, x, onScoredUpon);
   const start = startTop ? 150 : 450;
   const stop = startTop ? 450 : 150;
