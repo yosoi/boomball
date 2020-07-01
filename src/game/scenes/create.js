@@ -8,7 +8,10 @@ export default function() {
   this.matter.world.setBounds();
 
   // create the ball
-  const ball = new Ball(this);
+  const ball = new Ball(this, (collisionData) => {
+    // onBounce
+    console.log("bounce", collisionData);
+  });
 
   // create a "boom" for player 1
   const p1Boom = new Boom(
