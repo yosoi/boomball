@@ -20,7 +20,7 @@ export default function() {
   const p1Goal = new Goal(
     this,
     700,
-    300,
+    200,
     // onP2Scored
     () => {
       events.score('p2');
@@ -31,7 +31,7 @@ export default function() {
   const p2Goal = new Goal(
     this,
     100,
-    300,
+    200,
     // onP1Scored
     () => {
       events.score('p1');
@@ -42,7 +42,7 @@ export default function() {
   // create the ball
   const ball = new Ball(this, (collisionData) => {
     // onBounce
-    console.log("bounce", collisionData);
+    // console.log("bounce", collisionData);
   });
 
   // create a "boom" for player 1
