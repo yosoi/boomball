@@ -29,11 +29,11 @@ export default function(scene, onArmed, onCharging, onFired) {
   };
 
   this.fire = function() {
-    chargeIndicator.set(charge, point);
-    particleEffect.stop();
     new Shockwave(scene, charge, point);
     onFired(charge, point);
     timer.remove();
     charge = 0;
+    chargeIndicator.set(charge, point);
+    particleEffect.stop();
   };
 }
