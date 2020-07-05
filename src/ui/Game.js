@@ -1,14 +1,16 @@
-import Events from '../events/Events'
-import React, { useEffect } from 'react'
+import Events from "../events/Events";
+import React, { useEffect } from "react";
 
-export default function({
+export default function ({
   id,
   onComponentReady,
   onConnected,
   onConnecting,
   onDisconnected,
   onScore,
-  onWin
+  onWin,
+  game,
+  setGame,
 }) {
   useEffect(() => {
     const e = new Events();
@@ -17,7 +19,11 @@ export default function({
     e.onDisconnected(onDisconnected, true);
     e.onScore(onScore, true);
     e.onWin(onWin, true);
-    onComponentReady(id);
+
+    if (!game) {
+      setGame({ game: onComponentReady(id) });
+    }
+
     return () => {
       e.onConnected(onConnected, false);
       e.onConnecting(onConnecting, false);
@@ -32,11 +38,9 @@ export default function({
     onConnecting,
     onDisconnected,
     onScore,
-    onWin
+    onWin,
+    game,
+    setGame,
   ]);
-  return (
-    <div
-      className="mt-1"
-      id={id}></div>
-  );
+  return <div className='mt-1' id={id}></div>;
 }
