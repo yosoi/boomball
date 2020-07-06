@@ -1,6 +1,6 @@
-import ChargeIndicator from './graphics/ChargeIndicator'
+import ChargeIndicator from './effects/ChargeIndicator'
 import Phaser from 'phaser'
-import Shockwave from './graphics/Shockwave'
+import Shockwave from './effects/Shockwave'
 
 export default function(scene, onArmed, onCharging, onFired) {
   const chargeIndicator = new ChargeIndicator(scene);
@@ -23,7 +23,7 @@ export default function(scene, onArmed, onCharging, onFired) {
       repeat: 4
     });
   };
-  
+
   this.fire = function() {
     new Shockwave(scene, charge, point);
     onFired(charge, point);
