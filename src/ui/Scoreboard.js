@@ -1,30 +1,28 @@
-import Col from 'react-bootstrap/Col'
-import React from 'react';
-import Row from 'react-bootstrap/Row'
+import Col from "react-bootstrap/Col";
+import React from "react";
+import Row from "react-bootstrap/Row";
 
-export default function({
+export default function ({
   bestStreak,
   currentStreak,
   score,
-  alignRight = false
+  alignRight = false,
 }) {
   return (
-    <Row>
+    <Row className='scoreboard-row flex-fill p-2'>
       <Col className={"col-auto order-" + (alignRight ? 2 : 0)}>
-        <span className="text-muted">
-          {bestStreak}
-        </span>
+        <span className='text-muted'>{bestStreak}</span>
       </Col>
       <Col className={"col-auto order-" + (alignRight ? 1 : 1)}>
-        <span>
-          {currentStreak}
-        </span>
+        <span>{currentStreak}</span>
       </Col>
-      <Col className={"order-" + (alignRight ? 0 : 2)}>
+      <Col
+        className={
+          "col-auto order-" + (alignRight ? "0 mr-auto pr-2" : "2 ml-auto")
+        }
+      >
         <div className={alignRight ? "" : "text-right"}>
-          <span className="font-weight-bold">
-            {score}
-          </span>
+          <span className='font-weight-bold'>{score}</span>
         </div>
       </Col>
     </Row>

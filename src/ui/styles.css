@@ -1,0 +1,41 @@
+body,
+#app {
+  height: 100vh;
+}
+
+/** Game Pieces **/
+.app-body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scoreboard-row {
+  align-items: center;
+}
+*/
+
+/** Classes for the displayed toast **/
+.Toastify__toast-container {
+  font-size: 1em;
+  pointer-events: none;
+  position: fixed;
+  top: 100px;
+  border: none;
+}
+
+.custom-alert {
+  font-style: italic;
+  color: rgba(255, 115, 56, 1);
+  background: none !important;
+  box-shadow: none !important;
+  width: auto !important;
+  text-align: center;
+  font-size: 2em;
+}
+
+.custom-alert-body {
+  background: none;
+}
